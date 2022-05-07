@@ -5,6 +5,7 @@ import {getSortedPostsData} from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import {GetStaticProps} from 'next'
+import {CreateConnectWalletButton} from "../components/connect_wallet_button";
 
 export default function Home({allPostsData}: {
     allPostsData: {
@@ -41,6 +42,9 @@ export default function Home({allPostsData}: {
                     ))}
                 </ul>
             </section>
+            <div>
+                {CreateConnectWalletButton()}
+            </div>
         </Layout>
     )
 }
