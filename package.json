@@ -6,13 +6,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "@walletconnect/web3-provider": "^1.7.8",
     "date-fns": "^2.11.1",
+    "ethers": "^5.6.5",
     "gray-matter": "^4.0.2",
     "next": "latest",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "remark": "^14.0.1",
-    "remark-html": "^15.0.0"
+    "remark-html": "^15.0.0",
+    "web3": "^1.7.3",
+    "web3modal": "^1.9.7"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",
