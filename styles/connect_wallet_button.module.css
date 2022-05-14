@@ -3,22 +3,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #292A2C;
+    background-color: black;
     height: 100vh;
 }
 
 .connect {
-    background-color: #f58613;
+    background-color: black;
     border-style: none;
-    border-radius: 100px;
-    height: 200px;
-    width: 500px;
-    font-size: 60px;
-    color: #ffffff;
+    border-radius: 15rem;
+    height: 5rem;
+    width: 20rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: lightgrey;
     cursor: pointer;
-    box-shadow: 0 5px 50px 0 #000000;
 }
 
 .connect:hover {
-    background-color: #ce700b;
+    border: 0.2rem solid lightgrey;
 }

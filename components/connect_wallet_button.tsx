@@ -2,34 +2,35 @@ import Head from "next/head";
 import styles from "../styles/connect_wallet_button.module.css";
 import React from "react";
 
-// declare global {
-//     interface Window {
-//         ethereum:any;
-//     }
-// }
-// let ethereum = window.ethereum;
-// const web3 = require('web3');
 let Eth = require('web3-eth');
-
 // "Eth.providers.givenProvider" will be set if in an Ethereum supported browser.
+
 let eth = new Eth(Eth.givenProvider || 'ws://some.local-or-remote.node:8546');
 
 export function CreateConnectWalletButton() {
     const [walletAddress, setWalletAddress] = React.useState<string>("Connect Wallet");
+    const [apiReturn, setApiReturn] = React.useState<string>("init")
+    const [displayedTerm, setDisplayedTerm] = React.useState<string>(apiReturn)
+
+    // React.useEffect(() => {
+    //     // setDisplayedTerm(apiReturn)
+    // }, [apiReturn])
 
     React.useEffect(() => {
         async function checkConnection() {
             console.log("check connection")
-            await eth.getAccounts(function(err, accounts){
-                if (err != null) console.error("An error occurred: "+err);
+            await eth.getAccounts(function (err, accounts) {
+                if (err != null) console.error("An error occurred: " + err);
                 else if (accounts.length == 0) console.log("No wallet is connected. ");
                 else {
                     console.log("Wallet is connected.");
                     setWalletAddress(accounts[0]);
-                    //TODO: make this change dynamically when metamask changes accounts
+                    //TODO: make this change dynamically when metamask changes accounts (maybe the link below)
+                    //https://ethereum.stackexchange.com/questions/83914/how-to-disconnect-metamask-wallet-using-web3modal
                 }
             });
         }
+
         checkConnection();
 
         // Web3 Browswer Detection
@@ -68,8 +69,10 @@ export function CreateConnectWalletButton() {
     }, []);
 
     return (
-        <button className={styles.connect} id="connect">
-            {walletAddress}
-        </button>
+        <>
+            <button className={styles.connect} id="connect">
+                {walletAddress}
+            </button>
+        </>
     );
 }
