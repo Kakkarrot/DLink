@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import {GetStaticProps, GetStaticPaths} from 'next'
+import {getWallet} from '../api/firebase_handler'
+import React from 'react'
 
 export default function Post({
                                  postData
@@ -14,11 +16,25 @@ export default function Post({
         contentHtml: string
     }
 }) {
+    const [user, setUser] = React.useState("default");
+
+    const testMethod = async () => {
+        console.log("here")
+        const res = await getWallet({wallet: "0xtest"});
+        console.log(res)
+        setUser(res.name)
+    }
+
+    React.useEffect(() => {
+        testMethod()
+    })
+
     return (
         <Layout>
             <Head>
                 <title>{postData.title}</title>
             </Head>
+            <div>User: {user}</div>
             <article>
                 <h1 className={utilStyles.headingXl}>{postData.title}</h1>
                 <div className={utilStyles.lightText}>
@@ -33,8 +49,8 @@ export default function Post({
 export const getStaticPaths: GetStaticPaths = async () => {
     const paths = getAllPostIds()
     return {
-        paths,
-        fallback: false
+        paths: [],
+        fallback: true
     }
 }
 

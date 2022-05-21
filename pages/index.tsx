@@ -14,6 +14,8 @@ export default function Home({allPostsData}: {
         id: string
     }[]
 }) {
+    const walletAddress: string = "testWalletAddress"
+
     return (
         <Layout home>
             <Head>
@@ -26,7 +28,10 @@ export default function Home({allPostsData}: {
                     <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
                 </p>
             </section>
-            <Link href={'/posts/login'}>Login Page</Link>
+            <Link href={'/login'}>Login Page</Link>
+            <br/>
+            <Link href={`/posts/${walletAddress}.tsx`}>Profile Page</Link>
+            <Link href={`/posts/asd.tsx`}>Test Page</Link>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
