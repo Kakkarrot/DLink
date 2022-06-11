@@ -18,7 +18,6 @@ export function CreateConnectWalletButton() {
 
     React.useEffect(() => {
         async function checkConnection() {
-            console.log("check connection")
             await eth.getAccounts(function (err, accounts) {
                 if (err != null) console.error("An error occurred: " + err);
                 else if (accounts.length == 0) console.log("No wallet is connected. ");

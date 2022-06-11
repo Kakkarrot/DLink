@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {collection, doc, DocumentData, DocumentSnapshot, getDoc, getFirestore, query, where} from 'firebase/firestore';
+import {doc, DocumentData, DocumentSnapshot, getDoc, getFirestore} from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA9_fpY2mp3Ig4hx_gxN9bbNUHKLUT5xaA",
@@ -13,14 +13,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-export default db;
 
 interface Info {
     name: string;
 }
 
 export const getWallet = async ({wallet}): Promise<Info> => {
-    const wallets = collection(db, 'wallets');
     const info: DocumentSnapshot<DocumentData> = await getDoc(doc(db, 'wallets', wallet));
     return {name: info.data().name}
 }
