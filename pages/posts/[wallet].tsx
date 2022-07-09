@@ -1,8 +1,10 @@
-import Layout from '../../components/layout'
 import Head from 'next/head'
 import {GetServerSideProps} from 'next'
 import {getWallet} from '../api/firebase_handler'
 import React from 'react'
+import {Avatar, Button} from "@mui/material";
+import profileStyles from '../../styles/profile.module.css';
+
 
 export default function Post({postData}: {
     postData: {
@@ -11,25 +13,37 @@ export default function Post({postData}: {
 }) {
     const [user, setUser] = React.useState("default");
 
-    const testMethod = async () => {
-        console.log("here")
-        const res = await getWallet({wallet: "0xtest"});
-        console.log("RES: ", res)
-        setUser(res.name)
-        console.log("postdata: ", postData)
-    }
-
     React.useEffect(() => {
     })
 
     return (
-        <Layout>
+        // <Layout>
+        //     <Head>
+        //         <title>DLink</title>
+        //     </Head>
+        //     <div>User: {user}</div>
+        //     <div>Name: {postData.name}</div>
+        // </Layout>
+        <>
             <Head>
-                <title>{postData.name}</title>
+                <title>DLink</title>
             </Head>
+            <div className={profileStyles.pageWidth}>
+                <h1>
+                    David Zhang
+                </h1>
+                <Avatar
+                    alt="Remy Sharp"
+                    src="/images/profile.jpg"
+                    className={profileStyles.avatarStyle}
+                />
+                <Button
+                    className={profileStyles.linkStyle}
+                >Contained</Button>
+            </div>
             <div>User: {user}</div>
             <div>Name: {postData.name}</div>
-        </Layout>
+        </>
     )
 }
 

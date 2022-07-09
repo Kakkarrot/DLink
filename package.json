@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.8.7",
     "@walletconnect/web3-provider": "^1.7.8",
     "date-fns": "^2.11.1",
     "ethers": "^5.6.5",

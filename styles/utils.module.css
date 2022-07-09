@@ -26,7 +26,11 @@
 }
 
 .borderCircle {
-  border-radius: 9999px;
+  border-radius: 100px;
+  border-color: black;
+  border-width: 20px;
+  /*fill: #0070f3;*/
+  /*overflow: hidden;*/
 }
 
 .colorInherit {
